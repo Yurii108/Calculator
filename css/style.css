@@ -27,18 +27,29 @@ button {
 
 }
 
-.input {
+/* .input {
         width: 100%;
         height:60px;
         box-sizing: border-box;
+} */
+.display {
+        width: 100%;
+        height:60px;
+        border: solid 1px;
+        border-bottom: solid 0px;
+        border-color: rgb(82, 82, 82);
+        box-sizing: border-box;
+        background-color:rgb(211, 235, 227);
+        
 }
+
 
 .ac {
         grid-column-start: 1;
         grid-column-end: 3;
 }
 
-.sum {
+.sum_answer {
         grid-column-start: 3;
         grid-column-end: 5;
 }
