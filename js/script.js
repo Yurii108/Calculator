@@ -15,7 +15,9 @@ let display = document.querySelector('.display'),
         zero = document.querySelector('.zero'),
         plus = document.querySelector('.plus'),
         minus = document.querySelector('.minus'),
-        sumAnswer = document.querySelector('.sum_answer');
+        sumAnswer = document.querySelector('.sum_answer'),
+        del = document.querySelector('.del');
+        // window.history.back()
 
 // let input = document.querySelector('input');
 const allButton = document.querySelectorAll('button');
@@ -26,7 +28,8 @@ let sumDisplay = '';
 let num = '';
 let num2 = '';
 let sum = 0;
-let s = '';
+let s;
+let m = '';
 allButton.forEach((item) => {
         item.addEventListener('click', (event) => {
                 event.preventDefault();
@@ -46,6 +49,9 @@ allButton.forEach((item) => {
                 //         num2 += '2';
                 //         display.innerHTML = num2;
                 // }
+                if (item === del) {
+                        
+                }
                 writeNum(item, one, 1);
                 writeNum(item, two, 2);
                 writeNum(item, three, 3);
@@ -68,12 +74,19 @@ allButton.forEach((item) => {
                         s += 1;
 
                 }
+                if (item === minus) {
+                        // display.innerHTML = Math.floor(num);
+                        // sumDisplay += '+';
+                        m += 1;
+
+                }
                 if (item === allCancel) {
                         // location.reload();
                         display.innerHTML = '';
                         num = 0;
                         num2 = 0;
                         s = '';
+                        m = '';
                         sum = 0;
                         // setTimeout((display.innerHTML = ''), 2000);
 
@@ -81,7 +94,8 @@ allButton.forEach((item) => {
                 }
                 if (item === sumAnswer) {
                         // display.innerHTML = sum;
-                        sum = countSum(num, num2);
+                        if (s.length !== 0) {sum = countPlusSum(num, num2);}
+                        if (m.length !== 0) {sum = countMinusSum(num, num2);}
                         display.innerHTML = sum;
                 }
                 // if (item === one) {
@@ -99,23 +113,34 @@ allButton.forEach((item) => {
                 //         // console.log(sum);
                 // }
 
-                console.log([+num, +num2, s, sum]);
+                console.log([+num, +num2, typeof(s), sum]);
         });
 });
 
-function writeNum(i, n, c) {
-        if (i == n && s.length === 0) {
+function writeNum(i, n, c, ) {
+        if (i === n && s.length === 0 || m.length === 0) {
                 num += String(c);
-                display.innerHTML = num;
+                display.innerHTML = Math.floor(num);
         }
-        if (i == n && s.length !== 0) {
+        if (i === n && s.length !== 0 || m.length !== 0) {
                 num2 += String(c);
-                display.innerHTML = num2;
+                display.innerHTML = Math.floor(num2);
         }
+        // if (i == n && m.length === 0) {
+        //         num += String(c);
+        //         display.innerHTML = Math.floor(num);
+        // }
+        // if (i == n && m.length !== 0) {
+        //         num2 += String(c);
+        //         display.innerHTML = Math.floor(num2);
+        // }
 }
 
-function countSum(a, b) {
+function countPlusSum(a, b) {
         return Number(a) + Number(b);
+}
+function countMinusSum(a, b) {
+        return Number(a) - Number(b);
 }
 // console.log(countSum(num, num2));
 

@@ -17,7 +17,7 @@
                 <div class="display"></div>
                 <div class="button">
                         <button class="ac">AC</button>
-                        <button>Del</button>
+                        <button onclick="window.history.back()" class="del">Del</button>
                         <button class="division">/</button>
                         <button class="one">1</button>
                         <button class="two">2</button>
@@ -28,7 +28,7 @@
                         <button class="six">6</button>
                         <button class="minus">-</button>
                         <button class="seven">7</button>
-                        <button class="eight">8</button>
+                        <button class="eigth">8</button>
                         <button class="nine">9</button>
                         <button class="plus">+</button>
                         <button class="dut">.</button>
@@ -38,6 +38,12 @@
         </div>
 </form>
 </div>
+<script>
+        let GoBack = function (){
+            //здесь можно добавить обработку какой-нибудь логики, при желании
+            window.history.back();
+        };
+        </script>
 <script src="js/script.js"></script>
 </body>
 
