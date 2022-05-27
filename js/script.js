@@ -22,7 +22,6 @@ window.addEventListener('DOMContentLoaded', function () {
                 del = document.querySelector('.del'),
                 allButton = document.querySelectorAll('button');
 
-        let sumDisplay = '';
         let num = '';
         let numSecond = '';
         let sum = 0;
@@ -114,19 +113,8 @@ window.addEventListener('DOMContentLoaded', function () {
                 }
         }
 
-        function countPlusSum(a, b) {
-                return Number(a) + Number(b);
-        }
-
-        function countMinusSum(a, b) {
-                return Number(a) - Number(b);
-        }
-
-        function countDivideSum(a, b) {
-                return Number(a) / Number(b);
-        }
-
-        function countMultiplySum(a, b) {
-                return Number(a) * Number(b);
-        }
+        const countPlusSum = (a, b) => +a + (+b);
+        const countMinusSum = (a, b) => +a - +b;
+        const countDivideSum = (a, b) => +a / +b;
+        const countMultiplySum = (a, b) => +a * +b;
 });
