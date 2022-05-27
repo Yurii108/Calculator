@@ -1,7 +1,7 @@
 'use-strict';
 
 window.addEventListener('DOMContentLoaded', function () {
-        let display = document.querySelector('.display'),
+        const display = document.querySelector('.display'),
                 allCancel = document.querySelector('.ac'),
                 one = document.querySelector('.one'),
                 two = document.querySelector('.two'),
@@ -19,13 +19,12 @@ window.addEventListener('DOMContentLoaded', function () {
                 multiply = document.querySelector('.multiply'),
                 sumAnswer = document.querySelector('.sum_answer'),
                 dut = document.querySelector('.dut'),
-                del = document.querySelector('.del');
-
-        const allButton = document.querySelectorAll('button');
+                del = document.querySelector('.del'),
+                allButton = document.querySelectorAll('button');
 
         let sumDisplay = '';
         let num = '';
-        let num2 = '';
+        let numSecond = '';
         let sum = 0;
         let turn = true;
         let plusTurn = false,
@@ -33,6 +32,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 divideTurn = false,
                 multiplyTurn = false;
 
+        console.log(num);
         allButton.forEach((item) => {
                 item.addEventListener('click', (event) => {
                         event.preventDefault();
@@ -47,13 +47,22 @@ window.addEventListener('DOMContentLoaded', function () {
                         writeNum(item, nine, 9);
                         writeNum(item, zero, 0);
                         writeNum(item, dut, '.');
+                        
+                        if (num.length > 9) {
+                                num = num.slice(0, 9);
+                                display.innerHTML += ' Max numbers';
+                        }
+                        if (numSecond.length > 9) {
+                                numSecond = numSecond.slice(0, 9);
+                                display.innerHTML += ' Max numbers';
+                        }
                         if (item === del) {
                                 if (turn) {
-                                        num = '';
+                                        num = num.substring(0, num.length - 1);
                                         display.innerHTML = num;
                                 } else {
-                                        num2 = '';
-                                        display.innerHTML = num2;
+                                        numSecond = numSecond.slice(0, -1);
+                                        display.innerHTML = numSecond;
                                 }
                         }
                         if (item === plus) {
@@ -77,33 +86,32 @@ window.addEventListener('DOMContentLoaded', function () {
                         }
                         if (item === sumAnswer) {
                                 if (plusTurn) {
-                                        sum = countPlusSum(num, num2);
+                                        sum = countPlusSum(num, numSecond);
                                 }
                                 if (minusTurn) {
-                                        sum = countMinusSum(num, num2);
+                                        sum = countMinusSum(num, numSecond);
                                 }
                                 if (divideTurn) {
-                                        sum = countDivideSum(num, num2);
+                                        sum = countDivideSum(num, numSecond);
                                 }
                                 if (multiplyTurn) {
-                                        sum = countMultiplySum(num, num2);
+                                        sum = countMultiplySum(num, numSecond);
                                 }
                                 display.innerHTML = sum;
                         }
-                        console.log([+num, +num2, typeof (turn), sum]);
+                        console.log([num, +numSecond, typeof (turn), sum]);
                 });
         });
 
         function writeNum(i, n, c) {
                 if (i == n && turn) {
-                        num += String(c);
+                        num += c;
                         display.innerHTML = num;
                 }
                 if (i == n && !turn) {
-                        num2 += String(c);
-                        display.innerHTML = num2;
+                        numSecond += c;
+                        display.innerHTML = numSecond;
                 }
-
         }
 
         function countPlusSum(a, b) {
@@ -122,18 +130,3 @@ window.addEventListener('DOMContentLoaded', function () {
                 return Number(a) * Number(b);
         }
 });
-
-
-
-// function scrollingText(word) {
-//         let words = [];
-
-//         for (let i = 0; i < word.length; i++) {
-//                 words += word[i];
-
-//                 // words += word[i];
-//                 // words.push(w);
-//         }
-//         return  (words.toUpperCase());
-// }
-// console.log(scrollingText('robot'));
