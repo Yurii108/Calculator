@@ -1,7 +1,7 @@
 'use-strict';
 
 window.addEventListener('DOMContentLoaded', function () {
-        const display = document.querySelector('.display'),
+        const display = document.querySelector('.numbers-safe'),
                 allCancel = document.querySelector('.ac'),
                 one = document.querySelector('.one'),
                 two = document.querySelector('.two'),
