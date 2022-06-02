@@ -113,6 +113,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 }
         }
 
+        
         const countPlusSum = (a, b) => +a + (+b);
         const countMinusSum = (a, b) => +a - +b;
         const countDivideSum = (a, b) => +a / +b;
