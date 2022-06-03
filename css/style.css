@@ -4,6 +4,10 @@
         font-size: 16px;
 }
 
+.UAH {
+        margin-bottom: 10px;
+}
+
 body {
         background: rgb(0, 0, 0);
         background: linear-gradient(90deg, rgba(166,127,144,1) 0%, rgba(90,111,135,1) 100%);
@@ -65,11 +69,11 @@ button:hover {
         align-items: flex-end;
         justify-content: space-around;
         flex-direction: column;
-        padding: 10px;
+        padding: 5px;
         word-wrap: break-word;
         word-break: break-all;
 
-        border-color: rgb(82, 82, 82);
+        /* border-color:  rgb(82, 82, 82); */
         box-sizing: border-box;
 }
 
