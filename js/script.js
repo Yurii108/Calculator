@@ -1,30 +1,8 @@
 'use-strict';
 
 window.addEventListener('DOMContentLoaded', function () {
-
-    const inputUAH = document.querySelector('.UAH'),
-        inputEUR = document.querySelector('.EUR');
-
-    inputUAH.addEventListener('input', () => {
-        const request = new XMLHttpRequest();
-
-        request.open('GET', 'js/current1.json');
-        request.setRequestHeader('content-type', 'application/json', 'charset = UTF-8');
-        request.send();
-
-        request.addEventListener('load', () => {
-            if (request.status === 200) {
-                console.log(request.response);
-                const data = JSON.parse(request.response);
-                inputEUR.value = +inputUAH.value * data.current.eur;
-            } else {
-                inputEUR.value = 'Error - Что-то случилось, попробуйте через 1 час';
-            }
-        });
-    });
-
-    const display = document.querySelector('.numbers-safe'),
-        allCancel = document.querySelector('.ac'),
+let display = document.querySelector('.numbers-safe');
+       const allCancel = document.querySelector('.ac'),
         one = document.querySelector('.one'),
         two = document.querySelector('.two'),
         three = document.querySelector('.three'),
@@ -44,6 +22,7 @@ window.addEventListener('DOMContentLoaded', function () {
         del = document.querySelector('.del'),
         allButton = document.querySelectorAll('button');
 
+    display.innerText = '0';
     let num = '';
     let numSecond = '';
     let sum = 0;
@@ -68,7 +47,10 @@ window.addEventListener('DOMContentLoaded', function () {
             writeNum(item, nine, 9);
             writeNum(item, zero, 0);
             
-
+            if (num.length === 0) {
+                display.innerHTML += 0;
+            }
+            
             if (!num.includes('.')) {
                 writeNum(item, dut, '.');
             } else {
@@ -80,7 +62,6 @@ window.addEventListener('DOMContentLoaded', function () {
             } else {
                 writeNum(item, dut, '');
             }
-
 
 
             if (num.length > 9) {
