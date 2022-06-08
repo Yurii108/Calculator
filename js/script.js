@@ -1,8 +1,56 @@
 'use-strict';
 
 window.addEventListener('DOMContentLoaded', function () {
-let display = document.querySelector('.numbers-safe');
-       const allCancel = document.querySelector('.ac'),
+
+    //tabs
+
+    const tabs = document.querySelectorAll('.tabheader_item'),
+        tabsContent = document.querySelectorAll('.content'),
+        tabsParent = document.querySelector('tabheader_items');
+
+        function hideTabsContent(){
+            tabsContent.forEach(item => {
+                item.style.display = 'none';
+            });
+
+            tabs.forEach(item => {
+                item.classList.remove('tabheader_items_active');
+            });
+        }
+
+        function showTabsContent(i) {
+            tabsContent[i].style.display = 'block';
+            tabs[i].classList.add('tabheader_items_active');
+
+        }
+
+        hideTabsContent();
+        showTabsContent(0);
+    
+    const inputUAH = document.querySelector('.UAH'),
+        inputEUR = document.querySelector('.EUR');
+
+    inputUAH.addEventListener('input', () => {
+        const request = new XMLHttpRequest();
+
+        request.open('GET', 'js/current1.json');
+        request.setRequestHeader('content-type', 'application/json', 'charset = UTF-8');
+        request.send();
+
+        request.addEventListener('load', () => {
+            if (request.status === 200) {
+                console.log(request.response);
+                const data = JSON.parse(request.response);
+                inputEUR.value = +inputUAH.value * data.current.eur;
+            } else {
+                inputEUR.value = 'Error - Что-то случилось, попробуйте через 1 час';
+            }
+        });
+    });
+
+
+    let display = document.querySelector('.numbers-safe');
+    const allCancel = document.querySelector('.ac'),
         one = document.querySelector('.one'),
         two = document.querySelector('.two'),
         three = document.querySelector('.three'),
@@ -46,11 +94,11 @@ let display = document.querySelector('.numbers-safe');
             writeNum(item, eigth, 8);
             writeNum(item, nine, 9);
             writeNum(item, zero, 0);
-            
+
             if (num.length === 0) {
                 display.innerHTML += 0;
             }
-            
+
             if (!num.includes('.')) {
                 writeNum(item, dut, '.');
             } else {
@@ -117,7 +165,7 @@ let display = document.querySelector('.numbers-safe');
             }
             console.log([
                 num, + numSecond,
-                typeof(turn),
+                typeof (turn),
                 sum
             ]);
         });

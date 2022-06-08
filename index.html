@@ -2,57 +2,61 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculator</title>
-<link rel="stylesheet" href="css/style.css">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculator</title>
+        <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-<div class="panel__left">
-
-</div>
-<div class="container">
-        <div class="calculator">
-                <div class="output">
-                <div class="numbers-result"></div>
-                <div class="numbers-safe"></div>
-                </div>
-                <div class="button">
-                        <button class="ac">AC</button>
-                        <button class="del">Del</button>
-                        <button class="divide">/</button>
-                        <button class="one">1</button>
-                        <button class="two">2</button>
-                        <button class="three">3</button>
-                        <button class="multiply">&times;</button>
-                        <button class="four">4</button>
-                        <button class="five">5</button>
-                        <button class="six">6</button>
-                        <button class="minus">-</button>
-                        <button class="seven">7</button>
-                        <button class="eigth">8</button>
-                        <button class="nine">9</button>
-                        <button class="plus">+</button>
-                        <button class="dut">.</button>
-                        <button class="zero">0</button>
-                        <button class="sum_answer">=</button>
+        <div class="tabheader_items">
+                <div class="tabheader_item">Calcularot</div>
+                <div class="tabheader_item tabheader_items_active">Exchange</div>
+        </div>
+        <div class="container content">
+                <div class="calculator">
+                        <div class="output">
+                                <div class="numbers-result"></div>
+                                <div class="numbers-safe"></div>
+                        </div>
+                        <div class="button">
+                                <button class="ac">AC</button>
+                                <button class="del">Del</button>
+                                <button class="divide">/</button>
+                                <button class="one">1</button>
+                                <button class="two">2</button>
+                                <button class="three">3</button>
+                                <button class="multiply">&times;</button>
+                                <button class="four">4</button>
+                                <button class="five">5</button>
+                                <button class="six">6</button>
+                                <button class="minus">-</button>
+                                <button class="seven">7</button>
+                                <button class="eigth">8</button>
+                                <button class="nine">9</button>
+                                <button class="plus">+</button>
+                                <button class="dut">.</button>
+                                <button class="zero">0</button>
+                                <button class="sum_answer">=</button>
+                        </div>
                 </div>
         </div>
-</div>
 
-<div>
-        <div>
-        <label for="rub">UAH</label>
-        <input class="UAH" type="text">
+        <div class="container_change content">
+                <div>
+                        <div>
+                                <label for="rub">UAH</label>
+                                <input class="UAH" type="text">
+                        </div>
+                        <div>
+                                <label for="eur">EUR</label>
+                                <input class="EUR" type="text">
+                        </div>
+                </div>
         </div>
-        <div>
-        <label for="eur">EUR</label>
-        <input class="EUR" type="text">
-        </div>       
-</div>
-<script src="js/script.js"></script>
+
+        <script src="js/script.js"></script>
 </body>
 
 </html>
