@@ -2,11 +2,9 @@
 
 window.addEventListener('DOMContentLoaded', function () {
 
-    //tabs
-
     const tabs = document.querySelectorAll('.tabheader_item'),
         tabsContent = document.querySelectorAll('.content'),
-        tabsParent = document.querySelector('tabheader_items');
+        tabsParent = document.querySelector('.tabheader_items');
 
         function hideTabsContent(){
             tabsContent.forEach(item => {
@@ -18,36 +16,34 @@ window.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        function showTabsContent(i) {
+        function showTabsContent(i = 0) {
             tabsContent[i].style.display = 'block';
             tabs[i].classList.add('tabheader_items_active');
 
         }
 
         hideTabsContent();
-        showTabsContent(0);
-    
-    const inputUAH = document.querySelector('.UAH'),
-        inputEUR = document.querySelector('.EUR');
+        showTabsContent();
 
-    inputUAH.addEventListener('input', () => {
-        const request = new XMLHttpRequest();
+        if (tabsParent) {
+            console.log('ok');
+        } else {
+            console.log('erorr');
+        }
 
-        request.open('GET', 'js/current1.json');
-        request.setRequestHeader('content-type', 'application/json', 'charset = UTF-8');
-        request.send();
-
-        request.addEventListener('load', () => {
-            if (request.status === 200) {
-                console.log(request.response);
-                const data = JSON.parse(request.response);
-                inputEUR.value = +inputUAH.value * data.current.eur;
-            } else {
-                inputEUR.value = 'Error - Что-то случилось, попробуйте через 1 час';
+        tabsParent.addEventListener('click', (e) => {
+            const target = e.target;
+            if (target && target.classList.contains('tabheader_item')) {
+                tabs.forEach((item, i) => {
+                    if (item === target) {
+                        hideTabsContent();
+                        showTabsContent(i);
+                    }
+                });
             }
         });
-    });
 
+    // Carculator
 
     let display = document.querySelector('.numbers-safe');
     const allCancel = document.querySelector('.ac'),
