@@ -1,8 +1,71 @@
 'use-strict';
 
 window.addEventListener('DOMContentLoaded', function () {
-let display = document.querySelector('.numbers-safe');
-       const allCancel = document.querySelector('.ac'),
+
+    const timeInterval = setInterval(upDateTime, 1000);
+
+    function upDateTime() {
+        const watchOnPage = document.querySelector('.watch');
+        let t = new Date();
+        let hours, mins, seconds;
+        
+        hours = Math.floor(t / (1000 * 60 * 60) % 24) + 3;
+        mins = Math.floor(t / (1000 * 60) % 60);
+        seconds = Math.floor((t / 1000) % 60);
+        
+        watchOnPage.textContent = `${hours}:${plusZero(mins)}:${plusZero(seconds)}`;
+    
+        function plusZero(n) {
+            if (n < 10) {
+                return `0${n}`; 
+            } else {
+                return n;
+            }
+        }
+    }
+
+
+    //Tabs
+    const tabs = document.querySelectorAll('.tabheader_item'),
+        tabsContent = document.querySelectorAll('.content'),
+        tabsParent = document.querySelector('.tabheader_items');
+
+        function hideTabsContent(){
+            tabsContent.forEach(item => {
+                item.style.display = 'none';
+            });
+
+            tabs.forEach(item => {
+                item.classList.remove('tabheader_items_active');
+            });
+        }
+
+        function showTabsContent(i = 0) {
+            tabsContent[i].style.display = 'block';
+            tabs[i].classList.add('tabheader_items_active');
+
+        }
+
+        hideTabsContent();
+        showTabsContent();
+
+
+        tabsParent.addEventListener('click', (e) => {
+            const target = e.target;
+            if (target && target.classList.contains('tabheader_item')) {
+                tabs.forEach((item, i) => {
+                    if (item === target) {
+                        hideTabsContent();
+                        showTabsContent(i);
+                    }
+                });
+            }
+        });
+
+    // Carculator
+
+    let display = document.querySelector('.numbers-safe');
+    const allCancel = document.querySelector('.ac'),
         one = document.querySelector('.one'),
         two = document.querySelector('.two'),
         three = document.querySelector('.three'),
@@ -46,11 +109,11 @@ let display = document.querySelector('.numbers-safe');
             writeNum(item, eigth, 8);
             writeNum(item, nine, 9);
             writeNum(item, zero, 0);
-            
+
             if (num.length === 0) {
                 display.innerHTML += 0;
             }
-            
+
             if (!num.includes('.')) {
                 writeNum(item, dut, '.');
             } else {
@@ -117,7 +180,7 @@ let display = document.querySelector('.numbers-safe');
             }
             console.log([
                 num, + numSecond,
-                typeof(turn),
+                typeof (turn),
                 sum
             ]);
         });
