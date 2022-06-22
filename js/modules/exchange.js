@@ -1,4 +1,5 @@
-const inputUAH = document.querySelector('.UAH'),
+function exchange() {
+    const inputUAH = document.querySelector('.UAH'),
         inputEUR = document.querySelector('.EUR');
 
     inputUAH.addEventListener('input', () => {
@@ -18,3 +19,6 @@ const inputUAH = document.querySelector('.UAH'),
             }
         });
     });
+}
+
+export default exchange;
